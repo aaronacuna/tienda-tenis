@@ -1,11 +1,14 @@
 import React from 'react';
 import { Producto } from '../types';
+import { useCarrito } from '../context/CarritoContext';
 
 interface Props {
   producto: Producto;
 }
 
 const ProductoCard: React.FC<Props> = ({ producto }) => {
+  const { agregarAlCarrito } = useCarrito();
+
   return (
     <div style={{
       border: '1px solid #ddd',
@@ -36,14 +39,16 @@ const ProductoCard: React.FC<Props> = ({ producto }) => {
         <span style={{ fontSize: '20px', fontWeight: 'bold' }}>
           ${producto.precio}
         </span>
-        <button style={{
-          background: '#2e7d32',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          padding: '8px 16px',
-          cursor: 'pointer',
-        }}>
+        <button
+          onClick={() => agregarAlCarrito(producto)}
+          style={{
+            background: '#2e7d32',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            padding: '8px 16px',
+            cursor: 'pointer',
+          }}>
           Agregar
         </button>
       </div>
