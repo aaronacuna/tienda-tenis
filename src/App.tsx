@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { productos } from './data/productos';
+import ProductoCard from './components/ProductoCard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '32px 16px',
+    }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '8px' }}>
+        🎾 Tienda de Tenis
+      </h1>
+      <p style={{ textAlign: 'center', color: '#555', marginBottom: '32px' }}>
+        Todo para tu juego
+      </p>
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '24px',
+        justifyContent: 'center',
+      }}>
+        {productos.map((producto) => (
+          <ProductoCard key={producto.id} producto={producto} />
+        ))}
+      </div>
     </div>
   );
 }
