@@ -5,53 +5,21 @@ const Navbar: React.FC = () => {
   const { totalItems } = useCarrito();
 
   return (
-    <nav style={{
-      background: '#2e7d32',
-      padding: '0 32px',
-      height: '64px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-    }}>
+    <nav className="bg-green-700 px-8 h-16 flex items-center justify-between sticky top-0 z-50 shadow-md">
       
       {/* Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <span style={{ fontSize: '24px' }}>🎾</span>
-        <span style={{
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '20px',
-          letterSpacing: '0.5px',
-        }}>
+      <div className="flex items-center gap-2">
+        <span className="text-2xl">🎾</span>
+        <span className="text-white font-bold text-xl tracking-wide">
           TeniShop
         </span>
       </div>
 
       {/* Carrito */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        color: 'white',
-        cursor: 'pointer',
-      }}>
-        <span style={{ fontSize: '24px' }}>🛒</span>
+      <div className="flex items-center gap-2 cursor-pointer">
+        <span className="text-2xl">🛒</span>
         {totalItems > 0 && (
-          <span style={{
-            background: '#ff5722',
-            color: 'white',
-            borderRadius: '50%',
-            width: '22px',
-            height: '22px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '12px',
-            fontWeight: 'bold',
-          }}>
+          <span className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
             {totalItems}
           </span>
         )}

@@ -10,45 +10,29 @@ const ProductoCard: React.FC<Props> = ({ producto }) => {
   const { agregarAlCarrito } = useCarrito();
 
   return (
-    <div style={{
-      border: '1px solid #ddd',
-      borderRadius: '8px',
-      padding: '16px',
-      width: '250px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '8px',
-    }}>
+    <div className="border border-gray-200 rounded-xl p-4 w-64 flex flex-col gap-3 hover:shadow-lg transition-shadow">
       <img
         src={producto.imagen}
         alt={producto.nombre}
-        style={{ width: '100%', borderRadius: '4px' }}
+        className="w-full rounded-lg"
       />
-      <span style={{
-        fontSize: '12px',
-        color: '#888',
-        textTransform: 'uppercase',
-      }}>
+      <span className="text-xs text-gray-400 uppercase tracking-wide">
         {producto.categoria}
       </span>
-      <h3 style={{ margin: 0, fontSize: '16px' }}>{producto.nombre}</h3>
-      <p style={{ margin: 0, fontSize: '14px', color: '#555' }}>
+      <h3 className="font-semibold text-gray-800 text-base">
+        {producto.nombre}
+      </h3>
+      <p className="text-sm text-gray-500 flex-1">
         {producto.descripcion}
       </p>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ fontSize: '20px', fontWeight: 'bold' }}>
+      <div className="flex items-center justify-between mt-2">
+        <span className="text-xl font-bold text-gray-900">
           ${producto.precio}
         </span>
         <button
           onClick={() => agregarAlCarrito(producto)}
-          style={{
-            background: '#2e7d32',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            padding: '8px 16px',
-            cursor: 'pointer',
-          }}>
+          className="bg-green-700 hover:bg-green-800 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer"
+        >
           Agregar
         </button>
       </div>

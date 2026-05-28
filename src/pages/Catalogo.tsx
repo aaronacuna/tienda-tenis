@@ -20,12 +20,12 @@ const Catalogo: React.FC = () => {
   });
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 16px' }}>
-      
-      <h1 style={{ textAlign: 'center', marginBottom: '8px' }}>
+    <div className="max-w-6xl mx-auto px-4 py-10">
+
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">
         🎾 Tienda de Tenis
       </h1>
-      <p style={{ textAlign: 'center', color: '#555', marginBottom: '32px' }}>
+      <p className="text-center text-gray-500 mb-8">
         Todo para tu juego
       </p>
 
@@ -35,33 +35,20 @@ const Catalogo: React.FC = () => {
         placeholder="Buscar productos..."
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
-        style={{
-          width: '100%',
-          padding: '10px 16px',
-          fontSize: '16px',
-          border: '1px solid #ddd',
-          borderRadius: '8px',
-          marginBottom: '24px',
-          boxSizing: 'border-box',
-        }}
+        className="w-full px-4 py-3 border border-gray-300 rounded-xl mb-6 text-base focus:outline-none focus:ring-2 focus:ring-green-600"
       />
 
       {/* Filtros */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+      <div className="flex gap-2 flex-wrap mb-4">
         {categorias.map((categoria) => (
           <button
             key={categoria}
             onClick={() => setCategoriaActiva(categoria)}
-            style={{
-              padding: '8px 16px',
-              borderRadius: '20px',
-              border: '1px solid #2e7d32',
-              background: categoriaActiva === categoria ? '#2e7d32' : 'white',
-              color: categoriaActiva === categoria ? 'white' : '#2e7d32',
-              cursor: 'pointer',
-              fontWeight: categoriaActiva === categoria ? 'bold' : 'normal',
-              textTransform: 'capitalize',
-            }}
+            className={`px-4 py-2 rounded-full border font-medium text-sm capitalize transition-colors cursor-pointer ${
+              categoriaActiva === categoria
+                ? 'bg-green-700 text-white border-green-700'
+                : 'bg-white text-green-700 border-green-700 hover:bg-green-50'
+            }`}
           >
             {categoria}
           </button>
@@ -69,25 +56,20 @@ const Catalogo: React.FC = () => {
       </div>
 
       {/* Contador */}
-      <p style={{ color: '#888', marginBottom: '24px', fontSize: '14px' }}>
+      <p className="text-sm text-gray-400 mb-6">
         Mostrando {productosFiltrados.length} producto
         {productosFiltrados.length !== 1 ? 's' : ''}
       </p>
 
-      {/* Grid de productos */}
+      {/* Grid */}
       {productosFiltrados.length > 0 ? (
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '24px',
-          justifyContent: 'center',
-        }}>
+        <div className="flex flex-wrap gap-6 justify-center">
           {productosFiltrados.map((producto) => (
             <ProductoCard key={producto.id} producto={producto} />
           ))}
         </div>
       ) : (
-        <p style={{ textAlign: 'center', color: '#aaa', marginTop: '48px' }}>
+        <p className="text-center text-gray-400 mt-16 text-lg">
           No se encontraron productos.
         </p>
       )}
